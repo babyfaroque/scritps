@@ -1,12 +1,8 @@
 #!/bin/bash
 
 
-sudo apt install -y unzip wget
-#Install JAVA
-
-sudo add-apt-repository ppa:webupd8team/java
-sudo apt-get update
-apt-get install -y oracle-java8-installer
+sudo apt-get update -y
+apt-get install openjdk-8-jdk
 
 #Install Jenkins
 
@@ -31,9 +27,8 @@ cd /tmp ; mv sonar-runner-2.4 /opt
 mkdir -p /home/backup
 cp -p /etc/profile /home/backup/profile_`date +%d%b%Y-%H%M`
 echo "MAVEN_HOME=/opt/apache-maven-3.6.0" >> /etc/profile
-echo "JAVA_HOME=/usr/lib/jvm/java-8-oracle" >> /etc/profile
+echo "JAVA_HOME=/usr/lib/jvm/openjdk-8-jdk" >> /etc/profile
 echo "PATH=\$JAVA_HOME/bin:\$MAVEN_HOME/bin:\$PATH" >> /etc/profile
 . /etc/profile  ## to reload the configuration
 
 exit
-
